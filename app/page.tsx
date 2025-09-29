@@ -7,6 +7,9 @@ export default function Main() {
   const [color, setColor] = useState("red");
   const [text1, setText1] = useState("CHANGE ME :)");
   const [textColor1, setTextColor1] = useState("white");
+  const [skewY, setSkewY] = useState(0);
+  const [skewX, setSkewX] = useState(0);
+
   const naturalW = 547; // original SVG width
   const naturalH = 547; // original SVG height
 
@@ -42,6 +45,7 @@ export default function Main() {
           fontSize="24"
           dominantBaseline="middle"
           fill={textColor1}
+          transform={`skewX(${skewX}) skewY(${skewY})`}
         >
           {text1}
         </text>
@@ -62,6 +66,24 @@ export default function Main() {
         type="text"
         value={text1} // controlled by state
         onChange={(e) => setText1(e.target.value)} // update state
+        className="border p-2 rounded"
+      />
+      <br />
+      <p>Skew text</p>
+      <input
+        type="range"
+        max="100"
+        value={skewY}
+        min="0"
+        onChange={(e) => setSkewY(+e.target.value)} // update state
+        className="border p-2 rounded"
+      />
+      <input
+        type="range"
+        max="100"
+        value={skewX}
+        min="0"
+        onChange={(e) => setSkewX(+e.target.value)} // update state
         className="border p-2 rounded"
       />
     </div>
