@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 
 export default function Main() {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
   const [childSvg, setChildSvg] = useState("");
   const [color, setColor] = useState("red");
   const [text1, setText1] = useState("CHANGE ME :)");
@@ -10,7 +11,7 @@ export default function Main() {
   const naturalH = 547; // original SVG height
 
   useEffect(() => {
-    fetch("http://localhost:3000/assets/flag-banner-group.svg")
+    fetch(`${basePath}/assets/flag-banner-group.svg`)
       .then((res) => res.text())
       .then((txt) => {
         // replace *any* fill attribute in the svg
@@ -25,11 +26,7 @@ export default function Main() {
   return (
     <div>
       <svg viewBox="0 0 313 650" className="w-[313px] h-[650px]">
-        <image
-          href={"http://localhost:3000/assets/iPhone-12-Pro-Max.png"}
-          x="0"
-          y="0"
-        />
+        <image href={`${basePath}/assets/iPhone-12-Pro-Max.png`} x="0" y="0" />
 
         <g
           transform={`
